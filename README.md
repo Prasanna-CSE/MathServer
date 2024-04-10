@@ -33,68 +33,63 @@ Publish the website in the given URL.
 ```
 ## math.html
 
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-<title>Area of Rectangle</title>
+<title>Area of Surface</title>
 <meta name='viewport' content='width=device-width, initial-scale=1'>
-<h1><center>PRASANNA</center></h1>
-<h3><center>(212221040130)</center></h3>
 <style type="text/css">
-body 
-{
-background-color:black;
+body {
+    background-color: red;
 }
 .edge {
-width: 1440px;
-margin-left: auto;
-margin-right: auto;
-padding-top: 250px;
-padding-left: 300px;
+    width: 100%;
+    padding-top: 250px;
+    text-align: center;
 }
 .box {
-display:block;
-border: Thick dashed lime;
-width: 500px;
-min-height: 300px;
-font-size: 20px;
-background-color:blue;
+    display: inline-block;
+    border: thick dashed rgb(232, 234, 107);
+    width: 500px;
+    min-height: 300px;
+    font-size: 20px;
+    background-color: blue;
 }
-.formelt{
-color:orange;
-text-align: center;
-margin-top: 7px;
-margin-bottom: 6px;
+.formelt {
+    color: black;
+    text-align: center;
+    margin-top: 7px;
+    margin-bottom: 6px;
 }
-h1,h3
-{
-color:rgb(255, 0, 179);
-text-align: center;
-padding-top: 20px;
+h1 {
+    color: red;
+    padding-top: 20px;
 }
 </style>
 </head>
 <body>
 <div class="edge">
-<div class="box">
-<h1>Area of a Rectangle</h1>
-<form method="POST">
-{% csrf_token %}
-<div class="formelt">
-Base : <input type="text" name="base" value="{{b}}"></input>(in m)<br/>
-</div>
-<div class="formelt">
-Height : <input type="text" name="height" value="{{h}}"></input>(in m)<br/>
-</div>
-<div class="formelt">
-<input type="submit" value="Calculate"></input><br/>
-</div>
-<div class="formelt">
-Area : <input type="text" name="area" value="{{area}}"></input>m<sup>2</sup><br/>
-</div>
-</form>
-</div>
+    <div class="box">
+        <h1>Surface area of Rigth cylinder</h1>
+        <h3>PRASANNA L (212221040130)</h3>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="formelt">
+                Radius: <input type="text" name="radius" value="{{r}}">m<br/>
+            </div>
+            <div class="formelt">
+                Height: <input type="text" name="height" value="{{h}}">m<br/>
+            </div>
+            <div class="formelt">
+                <input type="submit" value="Calculate"><br/>
+            </div>
+            <div class="formelt">
+                Area: <input type="text" name="area" value="{{area}}">m<sup>2</sup><br/>
+            </div>
+        </form>
+    </div>
 </div>
 </body>
 </html>
@@ -123,21 +118,20 @@ def rectarea(request):
     return render(request,'mathapp/math.html',context) 
 
 ## urls.py
- 
 
 from django.contrib import admin
 from django.urls import path
 from mathapp import views
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('areaofrectangle/',views.rectarea,name="areaofrectangle"),
-    path('',views.rectarea,name="areaofrectangle")
+    path('areaofsurface/',views.surfacearea,name="areaofsurface"),
+    path('',views.surfacearea,name="areaofsurfaceroot")
 ]
 
 ```
 ## SERVER SIDE PROCESSING:
-![alt text](<Screenshot (102).png>)
+![alt text](<Screenshot (106).png>)
 ## HOMEPAGE:
-![alt text](<Screenshot (101).png>)
+![alt text](<Screenshot (105).png>)
 ## RESULT:
 The program for performing server side processing is completed successfully.
