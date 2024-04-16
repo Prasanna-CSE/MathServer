@@ -95,27 +95,34 @@ h1 {
 </html>
 
 ## views.py
-
+views.py
 
 from django.shortcuts import render
-def rectarea(request):
-    context={}
+
+def surfacearea(request):
+    context = {}
     context['area'] = "0"
-    context['b'] = "0"
+    context['r'] = "0"
     context['h'] = "0"
+    
     if request.method == 'POST':
         print("POST method is used")
-        b = request.POST.get('base','0')
-        h = request.POST.get('height','0')
-        print('request=',request)
-        print('Base=',b)
-        print('Height=',h)
-        area = (int(b) * int(h))
+        
+        print('request.POST:', request.POST)
+        
+        r = request.POST.get('radius', '0') 
+        h = request.POST.get('height', '0') 
+        print('radius =', r)
+        print('height =', h)
+        
+        area = 2 * 3.14 * int(r) * int(h) + 2*3.14*int(r)*int(r)
         context['area'] = area
-        context['b'] = b
+        context['r'] = r
         context['h'] = h
-        print('Area=',area)
-    return render(request,'mathapp/math.html',context) 
+        print('Area =', area)
+    
+    return render(request, 'mathapp/math.html', context)
+        
 
 ## urls.py
 
